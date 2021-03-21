@@ -19,6 +19,7 @@ class GetExecutionsStage extends AbstractTraceProcessingStage<ExecutionTrace> {
 
    @Override
    protected void execute(final ExecutionTrace element) throws Exception {
+      System.out.println(element.getTraceId());
       for (Execution execution : element.getTraceAsSortedExecutionSet()) {
          String signature = getKiekerSignature(execution);
          signatures.add(signature);
