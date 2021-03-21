@@ -14,6 +14,9 @@ public enum Util {
 		File folder = new File(EXAMPLE_PROJECT_FOLDER, projectName);
 		File logFolder = new File(folder, "monitoring-logs");
 		FileUtils.cleanDirectory(logFolder);
+		if (!logFolder.exists()) {
+		   logFolder.mkdir();
+		}
 		
 		ProcessBuilder processBuilder = new ProcessBuilder("gradle", "clean", "test", "--tests",
 				testcase);
