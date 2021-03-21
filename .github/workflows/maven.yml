@@ -43,12 +43,3 @@ jobs:
       with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
          check_name: Test Report ${{ matrix.java }} OS ${{ matrix.os }}
-    - name: Upload Unit Test Results
-      if: ${{ always() }}
-      uses: actions/upload-artifact@v2
-      with:
-        name: Unit Test Results (Java ${{ matrix.java }} OS ${{ matrix.os }})
-        path: |
-          dependency/target/surefire-reports/*
-          measurement/target/surefire-reports/*
-          analysis/target/surefire-reports/*
