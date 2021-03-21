@@ -27,11 +27,6 @@
 			<classifier>jar</classifier>
 		</dependency>
 		<dependency>
-			<groupId>net.kieker-monitoring</groupId>
-			<artifactId>kieker</artifactId>
-			<version>1.15-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>net.sourceforge.teetime</groupId>
 			<artifactId>teetime</artifactId>
 			<version>3.0</version>
