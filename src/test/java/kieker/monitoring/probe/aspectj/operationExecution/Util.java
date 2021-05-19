@@ -29,7 +29,7 @@ public enum Util {
    private static String getGradleCall() {
       String command;
       if (System.getProperty("os.name").startsWith("Windows")) {
-         command = "./gradlew";
+         command = "gradlew";
       } else {
          command = "./gradlew";
       }
