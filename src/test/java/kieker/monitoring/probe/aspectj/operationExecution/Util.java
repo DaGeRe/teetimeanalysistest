@@ -30,6 +30,8 @@ public enum Util {
       String command;
       if (System.getProperty("os.name").startsWith("Windows")) {
          command = "gradlew";
+         File gradlewFile = new File(EXAMPLE_PROJECT_FOLDER, "gradlew.bat");
+         System.out.println("Gradlew file exists: " + gradlewFile.getAbsolutePath() + " " + gradlewFile.exists());
       } else {
          command = "./gradlew";
       }
