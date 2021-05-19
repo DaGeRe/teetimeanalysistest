@@ -8,7 +8,7 @@ import org.apache.commons.io.FileUtils;
 public enum Util {
    ;
 
-   private static final File EXAMPLE_PROJECT_FOLDER = new File("src/test/resources/");
+   public static final File EXAMPLE_PROJECT_FOLDER = new File("src/test/resources/");
 
    public static File runTestcase(final String projectName, final String testcase) throws IOException {
       File folder = new File(EXAMPLE_PROJECT_FOLDER, projectName);
