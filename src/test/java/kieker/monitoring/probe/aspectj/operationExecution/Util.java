@@ -19,6 +19,9 @@ public enum Util {
          FileUtils.cleanDirectory(logFolder);
       }
 
+      File gradlewFile = new File(folder, "gradlew.bat");
+      System.out.println("Gradlew file exists: " + gradlewFile.getAbsolutePath() + " " + gradlewFile.exists());
+      
       String command = getGradleCall();
       ProcessBuilder processBuilder = new ProcessBuilder(command, "clean", "test", "--tests", testcase);
       processBuilder.directory(folder);
@@ -30,8 +33,7 @@ public enum Util {
       String command;
       if (System.getProperty("os.name").startsWith("Windows")) {
          command = "gradlew";
-         File gradlewFile = new File(EXAMPLE_PROJECT_FOLDER, "gradlew.bat");
-         System.out.println("Gradlew file exists: " + gradlewFile.getAbsolutePath() + " " + gradlewFile.exists());
+         
       } else {
          command = "./gradlew";
       }
