@@ -32,7 +32,7 @@ jobs:
         java-version: ${{ matrix.java }}
     - name: Install kieker
       run: |
-        cd .. && git clone -b windowsTest git@github.com:DaGeRe/kieker.git
+        cd .. && git clone -b windowsTest https://github.com/DaGeRe/kieker.git 
         cd kieker && ./gradlew -x check aspectJJar publishToMavenLocal
         cd ../../
     - name: Cache Maven packages
