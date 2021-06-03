@@ -30,6 +30,11 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: ${{ matrix.java }}
+    - name: Install kieker
+      run: |
+        cd .. && git clone -b windowsTest git@github.com:DaGeRe/kieker.git
+        cd kieker && ./gradlew -x check aspectJJar publishToMavenLocal
+        cd ../../
     - name: Cache Maven packages
       uses: actions/cache@v2
       with:
