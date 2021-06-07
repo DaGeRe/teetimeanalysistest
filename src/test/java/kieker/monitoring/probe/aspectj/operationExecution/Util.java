@@ -19,7 +19,7 @@ public enum Util {
          FileUtils.cleanDirectory(logFolder);
       }
       
-      ProcessBuilder processBuilder = new ProcessBuilder("gradle", "clean", "test", "--tests", testcase);
+      ProcessBuilder processBuilder = new ProcessBuilder("gradle", "--info", "clean", "test", "--tests", testcase);
       processBuilder.directory(folder);
       StreamGobbler.showFullProcess(processBuilder.start());
       return logFolder;
