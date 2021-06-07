@@ -28,6 +28,12 @@ public class OnlyRunTest {
 
       for (int i = 0; i < 15; i++) {
          File logFolder = Util.runTestcase(Constants.OPERATION_BEFOREAFTER_PROJECT, "TestSimpleOperationExecution");
+         
+         for (File containedFile : logFolder.listFiles()) {
+            System.out.println("Deleting " + containedFile.getAbsolutePath());
+            containedFile.delete();
+         }
+         
          System.out.println("Deleting " + logFolder.getAbsolutePath());
          FileUtils.cleanDirectory(logFolder);
          System.out.println("Iteration " + i + " finished");
