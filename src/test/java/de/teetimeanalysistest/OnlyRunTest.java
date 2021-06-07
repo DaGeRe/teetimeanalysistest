@@ -23,7 +23,7 @@ public class OnlyRunTest {
    }
    
    @Test(timeout = Constants.ONE_MINUTE_IN_MILLISECONDS)
-   public void runAndReadTest() throws IOException {
+   public void onlyRunTest() throws IOException {
       cleanBuildDirectories();
       
       for (int i = 0; i < 15; i++) {

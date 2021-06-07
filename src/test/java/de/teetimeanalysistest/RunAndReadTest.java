@@ -28,7 +28,7 @@ public class RunAndReadTest {
       }
    }
    
-   @Test(timeout = Constants.ONE_MINUTE_IN_MILLISECONDS)
+   @Test(timeout = 2*Constants.ONE_MINUTE_IN_MILLISECONDS)
    public void runAndReadTest() throws IOException {
       cleanBuildDirectories();
       
