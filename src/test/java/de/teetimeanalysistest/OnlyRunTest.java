@@ -21,14 +21,15 @@ public class OnlyRunTest {
          FileUtils.deleteDirectory(dotGradleFolder);
       }
    }
-   
+
    @Test(timeout = Constants.ONE_MINUTE_IN_MILLISECONDS)
    public void onlyRunTest() throws IOException {
       cleanBuildDirectories();
-      
+
       for (int i = 0; i < 15; i++) {
          File logFolder = Util.runTestcase(Constants.OPERATION_BEFOREAFTER_PROJECT, "TestSimpleOperationExecution");
          FileUtils.cleanDirectory(logFolder);
+         System.out.println("Iteration " + i + " finished");
       }
    }
 }

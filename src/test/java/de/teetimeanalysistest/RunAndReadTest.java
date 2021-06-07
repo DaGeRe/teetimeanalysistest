@@ -14,8 +14,6 @@ import teetime.framework.Execution;
 
 public class RunAndReadTest {
 
-   
-
    @Before
    public void cleanBuildDirectories() throws IOException {
       File buildFolder = new File(Util.EXAMPLE_PROJECT_FOLDER, "build");
@@ -27,17 +25,15 @@ public class RunAndReadTest {
          FileUtils.deleteDirectory(dotGradleFolder);
       }
    }
-   
-   @Test(timeout = 2*Constants.ONE_MINUTE_IN_MILLISECONDS)
+
+   @Test(timeout = 2 * Constants.ONE_MINUTE_IN_MILLISECONDS)
    public void runAndReadTest() throws IOException {
       cleanBuildDirectories();
-      
+
       for (int i = 0; i < 15; i++) {
          runAndClean();
       }
    }
-
-   
 
    private void runAndClean() throws IOException {
       File logFolder = Util.runTestcase(Constants.OPERATION_BEFOREAFTER_PROJECT, "TestSimpleOperationExecution");
