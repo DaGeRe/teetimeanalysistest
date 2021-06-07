@@ -29,7 +29,7 @@ public class OnlyRunTest {
       for (int i = 0; i < 15; i++) {
          File logFolder = Util.runTestcase(Constants.OPERATION_BEFOREAFTER_PROJECT, "TestSimpleOperationExecution");
          
-         for (File containedFile : logFolder.listFiles()) {
+         for (File containedFile : logFolder.listFiles()[0].listFiles()) {
             System.out.println("Deleting " + containedFile.getAbsolutePath());
             containedFile.delete();
          }

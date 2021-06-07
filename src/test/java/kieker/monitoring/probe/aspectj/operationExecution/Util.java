@@ -16,7 +16,9 @@ public enum Util {
       if (!logFolder.exists()) {
          logFolder.mkdir();
       } else {
+         System.out.println("Deleting old log folder: " + logFolder.getAbsolutePath());
          FileUtils.cleanDirectory(logFolder);
+         System.out.println("Log folder cleaned: " + logFolder.exists());
       }
       
       ProcessBuilder processBuilder = new ProcessBuilder("gradle", "--info", "clean", "test", "--tests", testcase);
