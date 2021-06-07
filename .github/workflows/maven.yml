@@ -13,7 +13,7 @@ jobs:
           java: [ 1.8, 11 ]
         fail-fast: false
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 5
+    timeout-minutes: 10
     name: Java ${{ matrix.java }} OS ${{ matrix.os }} sample
     steps:
     - name: Set Git Property and output path
