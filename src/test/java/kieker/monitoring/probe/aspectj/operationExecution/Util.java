@@ -21,7 +21,7 @@ public enum Util {
          System.out.println("Log folder cleaned: " + logFolder.exists());
       }
       
-      ProcessBuilder processBuilder = new ProcessBuilder("gradle", "--info", "clean", "test", "--tests", testcase);
+      ProcessBuilder processBuilder = new ProcessBuilder("gradle", "--no-watch-fs", "--info", "clean", "test", "--tests", testcase);
       processBuilder.directory(folder);
       StreamGobbler.showFullProcess(processBuilder.start());
       return logFolder;
