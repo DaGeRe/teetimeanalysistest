@@ -22,20 +22,15 @@ public class OnlyRunTest {
       }
    }
 
-   @Test(timeout = Constants.ONE_MINUTE_IN_MILLISECONDS)
+   @Test(timeout = 2*Constants.ONE_MINUTE_IN_MILLISECONDS)
    public void onlyRunTest() throws IOException {
       cleanBuildDirectories();
 
       for (int i = 0; i < 15; i++) {
          File logFolder = Util.runTestcase(Constants.OPERATION_BEFOREAFTER_PROJECT, "TestSimpleOperationExecution");
          
-         for (File containedFile : logFolder.listFiles()[0].listFiles()) {
-            System.out.println("Deleting " + containedFile.getAbsolutePath());
-            containedFile.delete();
-         }
+         RunAndReadTest.cleanFileByFile(logFolder);
          
-         System.out.println("Deleting " + logFolder.getAbsolutePath());
-         FileUtils.cleanDirectory(logFolder);
          System.out.println("Iteration " + i + " finished");
       }
    }

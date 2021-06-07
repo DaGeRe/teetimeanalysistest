@@ -38,6 +38,12 @@ public class RunAndReadTest {
    private void runAndClean() throws IOException {
       File logFolder = Util.runTestcase(Constants.OPERATION_BEFOREAFTER_PROJECT, "TestSimpleOperationExecution");
 
+      read(logFolder);
+
+      cleanFileByFile(logFolder);
+   }
+
+   private void read(final File logFolder) {
       KiekerReader app = new KiekerReader();
       File kiekerTraceFolder = logFolder.listFiles()[0];
       GetExecutionsStage resultStage = app.exampleReader(kiekerTraceFolder);
@@ -52,7 +58,15 @@ public class RunAndReadTest {
       System.out.println(resultStage.getSignatures());
 
       MatcherAssert.assertThat(resultStage.getSignatures(), IsCollectionContaining.hasItem("public void net.example.Instrumentable.callee()"));
+   }
 
+   public static void cleanFileByFile(final File logFolder) throws IOException {
+      for (File containedFile : logFolder.listFiles()[0].listFiles()) {
+         System.out.println("Deleting " + containedFile.getAbsolutePath());
+         containedFile.delete();
+      }
+      
+      System.out.println("Deleting " + logFolder.getAbsolutePath());
       FileUtils.cleanDirectory(logFolder);
    }
 }
