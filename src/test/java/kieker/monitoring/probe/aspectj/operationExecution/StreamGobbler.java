@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-
 /**
  * Combines the streams of a process.
  * 
@@ -27,8 +26,7 @@ public class StreamGobbler extends Thread {
 
    @Override
    public void run() {
-      try {
-         final InputStreamReader isr = new InputStreamReader(is);
+      try (final InputStreamReader isr = new InputStreamReader(is)) {
          final BufferedReader br = new BufferedReader(isr);
          String line = null;
          while ((line = br.readLine()) != null) {
