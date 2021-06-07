@@ -12,30 +12,36 @@ import teetime.framework.Execution;
  * Unit test for simple App.
  */
 public class KiekerReadingTest {
-   @Test
+
+   @Test(timeout = Constants.ONE_MINUTE_IN_MILLISECONDS)
    public void testReading() {
       File inputFile = new File("src/test/resources/kieker-20210107-215803-8575705594504340-UTC--KIEKER-KoPeMe");
-      KiekerReader app = new KiekerReader();
-      GetExecutionsStage resultStage = app.exampleReader(inputFile);
 
-      Execution execution = new Execution(app);
-      execution.executeBlocking();
+      for (int i = 0; i < 15; i++) {
+         KiekerReader app = new KiekerReader();
+         GetExecutionsStage resultStage = app.exampleReader(inputFile);
 
-      System.out.println(resultStage.getSignatures());
+         Execution execution = new Execution(app);
+         execution.executeBlocking();
 
-      MatcherAssert.assertThat(resultStage.getSignatures(), IsCollectionContaining.hasItem("public new viewtest.TestMe$InnerClass.<init>(viewtest.TestMe)"));
+         System.out.println(resultStage.getSignatures());
+
+         MatcherAssert.assertThat(resultStage.getSignatures(), IsCollectionContaining.hasItem("public new viewtest.TestMe$InnerClass.<init>(viewtest.TestMe)"));
+      }
    }
 
-   @Test
+   @Test(timeout = Constants.ONE_MINUTE_IN_MILLISECONDS)
    public void testReadingWithNewModifier() {
       File inputFile = new File("src/test/resources/kieker-20210321-103510-3402657433607-UTC--KIEKER-KoPeMe");
-      KiekerReader app = new KiekerReader();
-      GetExecutionsStage resultStage = app.exampleReader(inputFile);
+      for (int i = 0; i < 15; i++) {
+         KiekerReader app = new KiekerReader();
+         GetExecutionsStage resultStage = app.exampleReader(inputFile);
 
-      Execution execution = new Execution(app);
-      execution.executeBlocking();
+         Execution execution = new Execution(app);
+         execution.executeBlocking();
 
-      System.out.println(resultStage.getSignatures());
-      MatcherAssert.assertThat(resultStage.getSignatures(), IsCollectionContaining.hasItem("public new defaultpackage.NormalDependency.<init>()"));
+         System.out.println(resultStage.getSignatures());
+         MatcherAssert.assertThat(resultStage.getSignatures(), IsCollectionContaining.hasItem("public new defaultpackage.NormalDependency.<init>()"));
+      }
    }
 }

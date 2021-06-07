@@ -17,7 +17,7 @@ public class KiekerReadingTestCopy {
 
    private final File testFolder = new File("target/current");
 
-   @Test
+   @Test(timeout = Constants.ONE_MINUTE_IN_MILLISECONDS)
    public void testReading() throws IOException {
       File inputFile = new File("src/test/resources/kieker-20210107-215803-8575705594504340-UTC--KIEKER-KoPeMe");
       cleanup();
@@ -42,7 +42,7 @@ public class KiekerReadingTestCopy {
       }
    }
 
-   @Test
+   @Test(timeout = Constants.ONE_MINUTE_IN_MILLISECONDS)
    public void testReadingWithNewModifier() throws IOException {
       File inputFile = new File("src/test/resources/kieker-20210321-103510-3402657433607-UTC--KIEKER-KoPeMe");
       cleanup();

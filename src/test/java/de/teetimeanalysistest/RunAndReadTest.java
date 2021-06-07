@@ -14,7 +14,7 @@ import teetime.framework.Execution;
 
 public class RunAndReadTest {
 
-   private static final String OPERATION_BEFOREAFTER_PROJECT = "example-operationexecutionrecord";
+   
 
    @Before
    public void cleanBuildDirectories() throws IOException {
@@ -28,7 +28,7 @@ public class RunAndReadTest {
       }
    }
    
-   @Test
+   @Test(timeout = Constants.ONE_MINUTE_IN_MILLISECONDS)
    public void runAndReadTest() throws IOException {
       cleanBuildDirectories();
       
@@ -40,7 +40,7 @@ public class RunAndReadTest {
    
 
    private void runAndClean() throws IOException {
-      File logFolder = Util.runTestcase(OPERATION_BEFOREAFTER_PROJECT, "TestSimpleOperationExecution");
+      File logFolder = Util.runTestcase(Constants.OPERATION_BEFOREAFTER_PROJECT, "TestSimpleOperationExecution");
 
       KiekerReader app = new KiekerReader();
       File kiekerTraceFolder = logFolder.listFiles()[0];
