@@ -69,5 +69,6 @@ public class RunAndReadTest {
       
       System.out.println("Deleting " + logFolder.getAbsolutePath());
       FileUtils.cleanDirectory(logFolder);
+      System.out.println("Existing after deletion: " + logFolder.exists());
    }
 }
