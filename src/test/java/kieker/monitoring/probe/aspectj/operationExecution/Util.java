@@ -36,20 +36,19 @@ public enum Util {
       } else {
          LOG.info("Deleting old log folder: " + logFolder.getAbsolutePath());
          for (File kiekerLogFolder : logFolder.listFiles()) {
-            if (kiekerLogFolder != null) {
+            if (kiekerLogFolder != null && kiekerLogFolder.isDirectory()) {
                LOG.debug("Log folder: " + kiekerLogFolder.getAbsolutePath());
-               LOG.debug("Is directory: " + kiekerLogFolder.isDirectory());
                LOG.debug("Files: " + kiekerLogFolder.listFiles());
                for (File containedFile : kiekerLogFolder.listFiles()) {
                   LOG.info("Inner log file: " + containedFile);
                }
-               LOG.info("Kieker log folder: " + kiekerLogFolder.getAbsolutePath());
-               boolean success = kiekerLogFolder.delete();
-               LOG.info("Deleted: " + success + " Exists: " + kiekerLogFolder.exists());
-            }else {
+               
+            } else {
                LOG.error("listFiles returned null value: " + kiekerLogFolder);
             }
-            
+            LOG.info("Kieker log folder: " + kiekerLogFolder.getAbsolutePath());
+            boolean success = kiekerLogFolder.delete();
+            LOG.info("Deleted: " + success + " Exists: " + kiekerLogFolder.exists());
          }
          FileUtils.cleanDirectory(logFolder);
          LOG.info("Log folder cleaned: " + logFolder.exists());
