@@ -37,6 +37,8 @@ public enum Util {
          LOG.info("Deleting old log folder: " + logFolder.getAbsolutePath());
          for (File kiekerLogFolder : logFolder.listFiles()) {
             if (kiekerLogFolder != null) {
+               LOG.debug("Log folder: " + kiekerLogFolder.getAbsolutePath());
+               LOG.debug("Files: " + kiekerLogFolder.listFiles());
                for (File containedFile : kiekerLogFolder.listFiles()) {
                   LOG.info("Inner log file: " + containedFile);
                }
