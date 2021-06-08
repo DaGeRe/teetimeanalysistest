@@ -64,7 +64,7 @@ public class RunAndReadTest {
       for (File containedFile : logFolder.listFiles()[0].listFiles()) {
          System.out.println("Deleting " + containedFile.getAbsolutePath());
          boolean success = containedFile.delete();
-         System.out.println("Deleted: " + success);
+         System.out.println("Deleted: " + success + " " + containedFile.exists());
       }
       
       System.out.println("Deleting " + logFolder.getAbsolutePath());
