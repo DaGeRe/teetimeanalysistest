@@ -41,12 +41,6 @@ public class RunAndReadTest {
       read(logFolder);
 
       Util.cleanFileByFile(logFolder);
-
-      try {
-         Thread.sleep(100);
-      } catch (InterruptedException e) {
-         e.printStackTrace();
-      }
    }
 
    private void read(final File logFolder) {
