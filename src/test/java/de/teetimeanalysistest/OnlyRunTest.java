@@ -27,7 +27,7 @@ public class OnlyRunTest {
       cleanBuildDirectories();
 
       for (int i = 0; i < 15; i++) {
-         File logFolder = Util.runTestcase(Constants.OPERATION_BEFOREAFTER_PROJECT, "TestSimpleOperationExecution");
+         File logFolder = Util.runTestcaseMaven(Constants.OPERATION_BEFOREAFTER_PROJECT_MAVEN, "TestSimpleOperationExecution");
          
          RunAndReadTest.cleanFileByFile(logFolder);
          

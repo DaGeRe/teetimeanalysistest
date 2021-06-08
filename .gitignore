@@ -4,3 +4,4 @@
 target/
 src/test/resources/example-operationexecutionrecord/build/
 src/test/resources/example-operationexecutionrecord/.gradle/
+src/test/resources/example-operationexecutionrecord-maven/monitoring-logs/

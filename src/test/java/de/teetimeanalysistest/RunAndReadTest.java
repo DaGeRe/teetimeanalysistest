@@ -36,7 +36,7 @@ public class RunAndReadTest {
    }
 
    private void runAndClean() throws IOException {
-      File logFolder = Util.runTestcase(Constants.OPERATION_BEFOREAFTER_PROJECT, "TestSimpleOperationExecution");
+      File logFolder = Util.runTestcaseMaven(Constants.OPERATION_BEFOREAFTER_PROJECT_MAVEN, "TestSimpleOperationExecution");
 
       read(logFolder);
 
