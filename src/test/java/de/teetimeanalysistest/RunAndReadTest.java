@@ -40,7 +40,7 @@ public class RunAndReadTest {
 
       read(logFolder);
 
-      cleanFileByFile(logFolder);
+      Util.cleanFileByFile(logFolder);
    }
 
    private void read(final File logFolder) {
@@ -58,25 +58,5 @@ public class RunAndReadTest {
       System.out.println(resultStage.getSignatures());
 
       MatcherAssert.assertThat(resultStage.getSignatures(), IsCollectionContaining.hasItem("public void net.example.Instrumentable.callee()"));
-   }
-
-   public static void cleanFileByFile(final File logFolder) throws IOException {
-      for (File containedFile : logFolder.listFiles()[0].listFiles()) {
-         System.out.println("Deleting " + containedFile.getAbsolutePath());
-         boolean success = containedFile.delete();
-         System.out.println("Deleted: " + success + " " + containedFile.exists());
-      }
-      for (File kiekerLogFolder : logFolder.listFiles()) {
-         System.out.println("Deleting log folder: " + kiekerLogFolder.getAbsolutePath());
-         boolean success = kiekerLogFolder.delete();
-         System.out.println("Deleted: " + success + " " + kiekerLogFolder.exists());
-      }
-      
-      System.out.println("Deleting log folder: " + logFolder.getAbsolutePath());
-      boolean success = logFolder.delete();
-      System.out.println("Deleted: " + success + " " + logFolder.exists());
-//      System.out.println("Deleting " + logFolder.getAbsolutePath());
-//      FileUtils.cleanDirectory(logFolder);
-//      System.out.println("Existing after deletion: " + logFolder.exists());
    }
 }

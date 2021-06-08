@@ -41,6 +41,26 @@ public enum Util {
       return logFolder;
    }
 
+   public static void cleanFileByFile(final File logFolder) throws IOException {
+      for (File containedFile : logFolder.listFiles()[0].listFiles()) {
+         System.out.println("Deleting " + containedFile.getAbsolutePath());
+         boolean success = containedFile.delete();
+         System.out.println("Deleted: " + success + " " + containedFile.exists());
+      }
+      for (File kiekerLogFolder : logFolder.listFiles()) {
+         System.out.println("Deleting log folder: " + kiekerLogFolder.getAbsolutePath());
+         boolean success = kiekerLogFolder.delete();
+         System.out.println("Deleted: " + success + " " + kiekerLogFolder.exists());
+      }
+      
+//      System.out.println("Deleting log folder: " + logFolder.getAbsolutePath());
+//      boolean success = logFolder.delete();
+//      System.out.println("Deleted: " + success + " " + logFolder.exists());
+//      System.out.println("Deleting " + logFolder.getAbsolutePath());
+//      FileUtils.cleanDirectory(logFolder);
+//      System.out.println("Existing after deletion: " + logFolder.exists());
+   }
+   
    private static void runGradle(final String testcase, final File folder) throws IOException {
       ProcessBuilder processBuilder = new ProcessBuilder("gradle", "--no-watch-fs", "--info", "clean", "test", "--tests", testcase);
       processBuilder.directory(folder);

@@ -29,7 +29,7 @@ public class OnlyRunTest {
       for (int i = 0; i < 15; i++) {
          File logFolder = Util.runTestcaseMaven(Constants.OPERATION_BEFOREAFTER_PROJECT_MAVEN, "TestSimpleOperationExecution");
          
-         RunAndReadTest.cleanFileByFile(logFolder);
+         Util.cleanFileByFile(logFolder);
          
          System.out.println("Iteration " + i + " finished");
       }
