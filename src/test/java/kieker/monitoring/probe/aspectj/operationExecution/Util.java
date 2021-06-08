@@ -46,7 +46,13 @@ public enum Util {
    }
    
    private static void runMaven(final String testcase, final File folder) throws IOException {
-      ProcessBuilder processBuilder = new ProcessBuilder("./mvnw", "clean", "test", "-Dtest=" + testcase);
+      String mvnCall;
+      if (!System.getProperty("os.name").startsWith("Windows")) {
+         mvnCall = "mvn";
+      } else {
+         mvnCall = "mvn.cmd";
+      }
+      ProcessBuilder processBuilder = new ProcessBuilder(mvnCall, "clean", "test", "-Dtest=" + testcase);
       processBuilder.directory(folder);
       Process process = processBuilder.start();
       StreamGobbler.showFullProcess(process);
