@@ -38,6 +38,7 @@ public enum Util {
          for (File kiekerLogFolder : logFolder.listFiles()) {
             if (kiekerLogFolder != null) {
                LOG.debug("Log folder: " + kiekerLogFolder.getAbsolutePath());
+               LOG.debug("Is directory: " + kiekerLogFolder.isDirectory());
                LOG.debug("Files: " + kiekerLogFolder.listFiles());
                for (File containedFile : kiekerLogFolder.listFiles()) {
                   LOG.info("Inner log file: " + containedFile);

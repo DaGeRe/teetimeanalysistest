@@ -10,7 +10,7 @@ jobs:
     strategy: 
         matrix:
           os: [ubuntu-latest, windows-latest]
-          java: [ 1.8, 11 ]
+          java: [ 1.8 ]
         fail-fast: false
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
