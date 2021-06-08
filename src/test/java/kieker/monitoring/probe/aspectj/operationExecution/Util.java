@@ -32,8 +32,11 @@ public enum Util {
          logFolder.mkdir();
       } else {
          System.out.println("Deleting old log folder: " + logFolder.getAbsolutePath());
-         for (File content : logFolder.listFiles()) {
-            System.out.println("Content file: " + content.getAbsolutePath());
+         for (File kiekerLogFolder : logFolder.listFiles()) {
+            System.out.println("Kieker log folder: " + kiekerLogFolder.getAbsolutePath());
+            for (File containedFile : kiekerLogFolder.listFiles()) {
+               System.out.println("Inner log file: " + containedFile);
+            }
          }
          FileUtils.cleanDirectory(logFolder);
          System.out.println("Log folder cleaned: " + logFolder.exists());
@@ -45,12 +48,12 @@ public enum Util {
       for (File containedFile : logFolder.listFiles()[0].listFiles()) {
          System.out.println("Deleting " + containedFile.getAbsolutePath());
          boolean success = containedFile.delete();
-         System.out.println("Deleted: " + success + " " + containedFile.exists());
+         System.out.println("Deleted: " + success + " Exists: " + containedFile.exists());
       }
       for (File kiekerLogFolder : logFolder.listFiles()) {
          System.out.println("Deleting log folder: " + kiekerLogFolder.getAbsolutePath());
          boolean success = kiekerLogFolder.delete();
-         System.out.println("Deleted: " + success + " " + kiekerLogFolder.exists());
+         System.out.println("Deleted: " + success + " Exists: " + kiekerLogFolder.exists());
       }
       
 //      System.out.println("Deleting log folder: " + logFolder.getAbsolutePath());
