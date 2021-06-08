@@ -32,6 +32,9 @@ public enum Util {
          logFolder.mkdir();
       } else {
          System.out.println("Deleting old log folder: " + logFolder.getAbsolutePath());
+         for (File content : logFolder.listFiles()) {
+            System.out.println("Content file: " + content.getAbsolutePath());
+         }
          FileUtils.cleanDirectory(logFolder);
          System.out.println("Log folder cleaned: " + logFolder.exists());
       }

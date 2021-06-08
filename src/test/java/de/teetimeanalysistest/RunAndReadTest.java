@@ -63,7 +63,8 @@ public class RunAndReadTest {
    public static void cleanFileByFile(final File logFolder) throws IOException {
       for (File containedFile : logFolder.listFiles()[0].listFiles()) {
          System.out.println("Deleting " + containedFile.getAbsolutePath());
-         containedFile.delete();
+         boolean success = containedFile.delete();
+         System.out.println("Deleted: " + success);
       }
       
       System.out.println("Deleting " + logFolder.getAbsolutePath());
