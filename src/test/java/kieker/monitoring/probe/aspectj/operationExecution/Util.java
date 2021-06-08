@@ -4,10 +4,13 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public enum Util {
    ;
 
+   private static final Logger LOG = LogManager.getLogger(Util.class);
    public static final File EXAMPLE_PROJECT_FOLDER = new File("src/test/resources/");
 
    public static File runTestcaseGradle(final String projectName, final String testcase) throws IOException {
@@ -31,29 +34,29 @@ public enum Util {
       if (!logFolder.exists()) {
          logFolder.mkdir();
       } else {
-         System.out.println("Deleting old log folder: " + logFolder.getAbsolutePath());
+         LOG.info("Deleting old log folder: " + logFolder.getAbsolutePath());
          for (File kiekerLogFolder : logFolder.listFiles()) {
-            System.out.println("Kieker log folder: " + kiekerLogFolder.getAbsolutePath());
+            LOG.info("Kieker log folder: " + kiekerLogFolder.getAbsolutePath());
             for (File containedFile : kiekerLogFolder.listFiles()) {
-               System.out.println("Inner log file: " + containedFile);
+               LOG.info("Inner log file: " + containedFile);
             }
          }
          FileUtils.cleanDirectory(logFolder);
-         System.out.println("Log folder cleaned: " + logFolder.exists());
+         LOG.info("Log folder cleaned: " + logFolder.exists());
       }
       return logFolder;
    }
 
    public static void cleanFileByFile(final File logFolder) throws IOException {
       for (File containedFile : logFolder.listFiles()[0].listFiles()) {
-         System.out.println("Deleting " + containedFile.getAbsolutePath());
+         LOG.info("Deleting " + containedFile.getAbsolutePath());
          boolean success = containedFile.delete();
-         System.out.println("Deleted: " + success + " Exists: " + containedFile.exists());
+         LOG.info("Deleted: " + success + " Exists: " + containedFile.exists());
       }
       for (File kiekerLogFolder : logFolder.listFiles()) {
-         System.out.println("Deleting log folder: " + kiekerLogFolder.getAbsolutePath());
+         LOG.info("Deleting log folder: " + kiekerLogFolder.getAbsolutePath());
          boolean success = kiekerLogFolder.delete();
-         System.out.println("Deleted: " + success + " Exists: " + kiekerLogFolder.exists());
+         LOG.info("Deleted: " + success + " Exists: " + kiekerLogFolder.exists());
       }
       
 //      System.out.println("Deleting log folder: " + logFolder.getAbsolutePath());
