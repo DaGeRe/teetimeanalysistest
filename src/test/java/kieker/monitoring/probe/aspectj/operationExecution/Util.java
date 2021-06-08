@@ -46,7 +46,7 @@ public enum Util {
    }
    
    private static void runMaven(final String testcase, final File folder) throws IOException {
-      ProcessBuilder processBuilder = new ProcessBuilder("mvn", "clean", "test", "-Dtest=" + testcase);
+      ProcessBuilder processBuilder = new ProcessBuilder("./mvnw", "clean", "test", "-Dtest=" + testcase);
       processBuilder.directory(folder);
       Process process = processBuilder.start();
       StreamGobbler.showFullProcess(process);
